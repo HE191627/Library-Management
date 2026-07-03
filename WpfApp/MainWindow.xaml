@@ -1,0 +1,42 @@
+<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Library Elite - Quản Lý Thư Viện" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen" Background="#ECF0F1">
+    <DockPanel>
+        <!-- Sidebar -->
+        <Border DockPanel.Dock="Left" Width="220" Background="#2C3E50">
+            <StackPanel>
+                <!-- Logo -->
+                <TextBlock Text="📚 LIBRARY ELITE" Foreground="White" FontSize="20" FontWeight="Bold" 
+                           Margin="20,25,20,5" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="txtAdminName" Foreground="#1ABC9C" FontSize="12" 
+                           HorizontalAlignment="Center" Margin="0,0,0,25"/>
+                
+                <Separator Background="#34495E" Margin="10,0"/>
+
+                <!-- Menu Buttons -->
+                <Button Content="📖  Kho Sách" Click="btnInventory_Click" 
+                        Style="{StaticResource MenuButtonStyle}" Margin="0,5,0,0"/>
+                <Button Content="🏷️  Thể Loại" Click="btnCategory_Click" 
+                        Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="📋  Mượn / Trả Sách" Click="btnLoan_Click" 
+                        Style="{StaticResource MenuButtonStyle}"/>
+                <Button Content="👥  Quản Lý Độc Giả" Click="btnMember_Click" 
+                        Style="{StaticResource MenuButtonStyle}"/>
+                
+                <Separator Background="#34495E" Margin="10,15"/>
+                
+                <!-- Logout -->
+                <Button Content="🚪  Đăng Xuất" Click="btnLogout_Click" 
+                        Style="{StaticResource LogoutButtonStyle}" Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content Area - Frame for Page navigation -->
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="#ECF0F1"/>
+    </DockPanel>
+</Window>

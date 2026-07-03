@@ -1,0 +1,84 @@
+﻿<Window x:Class="LibraryElite.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Library Elite Management" Height="700" Width="1100"
+        WindowStartupLocation="CenterScreen" Background="#F5F5F5">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="#2C3E50" CornerRadius="0 20 20 0">
+            <StackPanel Margin="10 30">
+                <TextBlock Text="LIBRARY ELITE" Foreground="White" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 0 0 40"/>
+
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" HorizontalAlignment="Left" Margin="10 5">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ViewDashboard" Margin="0 0 10 0"/>
+                        <TextBlock Text="Dashboard"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" HorizontalAlignment="Left" Margin="10 5" Background="#34495E">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="BookOpenPageVariant" Margin="0 0 10 0"/>
+                        <TextBlock Text="Quản lý Sách"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" HorizontalAlignment="Left" Margin="10 5">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="AccountGroup" Margin="0 0 10 0"/>
+                        <TextBlock Text="Thành viên"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Grid.Row="0" Padding="15" UniformCornerRadius="10">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" Foreground="Gray" Margin="0 0 10 0"/>
+                    <TextBox x:Name="txtSearch" Width="300" materialDesign:HintAssist.Hint="Tìm kiếm theo tên sách hoặc ISBN..." 
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 0 30 0"/>
+
+                    <ComboBox x:Name="cbCategory" Width="200" materialDesign:HintAssist.Hint="Lọc theo thể loại" 
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem Content="Tất cả thể loại"/>
+                    </ComboBox>
+
+                    <Button Content="LỌC" Style="{StaticResource MaterialDesignRaisedButton}" Margin="20 0" Width="100"/>
+                </StackPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="1" Margin="0 20" UniformCornerRadius="10" VerticalAlignment="Stretch">
+                <DataGrid x:Name="dgBooks" AutoGenerateColumns="False" CanUserAddRows="False" 
+                          Background="White" HeadersVisibility="All" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding BookId}" Width="50"/>
+                        <DataGridTextColumn Header="Tên Sách" Binding="{Binding Title}" Width="*"/>
+                        <DataGridTextColumn Header="ISBN" Binding="{Binding Isbn}" Width="120"/>
+                        <DataGridTextColumn Header="Năm XB" Binding="{Binding PublishYear}" Width="80"/>
+                        <DataGridTextColumn Header="Giá" Binding="{Binding Price}" Width="100"/>
+                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}" Width="80"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </materialDesign:Card>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="THÊM MỚI" Background="#27AE60" BorderBrush="#27AE60" Margin="10 0"/>
+                <Button Content="CẬP NHẬT" Background="#F1C40F" BorderBrush="#F1C40F" Margin="10 0"/>
+                <Button Content="XÓA SÁCH" Background="#E74C3C" BorderBrush="#E74C3C" Margin="10 0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
